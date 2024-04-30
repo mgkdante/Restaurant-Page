@@ -1,7 +1,7 @@
 import "./style.css";
-import { homeComponent } from "./home";
-import { menuComponent } from "./menu";
-import { contactComponent } from "./contact";
+import { homeComponent } from "./home/home";
+import { menuComponent } from "./menu/menu";
+import { contactComponent } from "./contact/contact";
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");

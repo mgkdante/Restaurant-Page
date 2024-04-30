@@ -169,3 +169,32 @@ button {
   text-align: center;
   align-items: center;
 }
+
+#menu {
+  text-align: center;
+  padding: 4rem;
+}
+
+#title-menu {
+  margin: 2rem;
+}
+
+#menu-content {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+}
+
+#menu-content img {
+  width: 500px;
+  border-radius: 10%;
+}
+
+.menu-item {
+  padding: 1.5rem;
+  background: var(--primary-color);
+  border-radius: 2rem;
+  color: var(--tertiary-color);
+}
