@@ -5,41 +5,79 @@ const contactComponent = () => {
   const contactTitle = document.createElement("h2");
   contactTitle.textContent = "Contact Us";
 
-  const contactForm = document.createElement("div");
-  contactForm.innerHTML =
-    '<form action="/">\n' +
-    '    <p>Required fields are followed by <span aria-label="Required">*</span></p>\n' +
-    "    <fieldset>\n" +
-    "      <legend>Contact</legend>\n" +
-    "      <ul>\n" +
-    "        <li> \n" +
-    '          <label for="name">Name<span aria-label="Required">*</span>: </label>\n' +
-    '          <input type="text" id="name" name="user_name">\n' +
-    "        </li>\n" +
-    "\n" +
-    "        <li> \n" +
-    '          <label for="email">Email<span aria-label="Required">*</span>: </label>\n' +
-    '          <input type="email" id="email" name="user_email">\n' +
-    "        </li>\n" +
-    "\n" +
-    "\n" +
-    "        <li> \n" +
-    '          <label for="message">Message: </label>\n' +
-    '          <textarea name="message" id="message" cols="30" rows="10" name="user_message"></textarea>\n' +
-    "        </li>\n" +
-    "\n" +
-    '        <li class="button">\n' +
-    '          <button type="submit" id="form-button">Submit your message!</button>\n' +
-    "        </li>\n" +
-    "\n" +
-    "      </ul>\n" +
-    "\n" +
-    "\n" +
-    "    </fieldset>\n" +
-    "  </form>";
+  const form = document.createElement("form");
+  form.action = "/";
+
+  // Create paragraph for required fields
+  const p = document.createElement("p");
+  p.textContent = "Required fields are followed by ";
+  const span = document.createElement("span");
+  span.setAttribute("aria-label", "Required");
+  span.textContent = "*";
+  p.appendChild(span);
+
+  // Create fieldset for contact information
+  const fieldset = document.createElement("fieldset");
+  const legend = document.createElement("legend");
+  legend.textContent = "Contact";
+  fieldset.appendChild(legend);
+
+  // Create list for form items
+  const ul = document.createElement("ul");
+
+  // Function to create list item with label and input
+  function createFormItem(id, labelText, inputType) {
+    const li = document.createElement("li");
+    const label = document.createElement("label");
+    label.htmlFor = id;
+    label.innerHTML = labelText;
+    li.appendChild(label);
+    const input = document.createElement(
+      inputType === "textarea" ? "textarea" : "input",
+    );
+    if (inputType !== "textarea") {
+      input.type = inputType;
+    }
+    input.id = id;
+    input.name = `user_${id}`;
+    li.appendChild(input);
+    return li;
+  }
+
+  // Add form items to the list
+  ul.appendChild(
+    createFormItem(
+      "name",
+      'Name<span aria-label="Required">*</span>: ',
+      "text",
+    ),
+  );
+  ul.appendChild(
+    createFormItem(
+      "email",
+      'Email<span aria-label="Required">*</span>: ',
+      "email",
+    ),
+  );
+  ul.appendChild(createFormItem("message", "Message: ", "textarea"));
+
+  // Create submit button
+  const liButton = document.createElement("li");
+  liButton.className = "button";
+  const button = document.createElement("button");
+  button.type = "submit";
+  button.id = "form-button";
+  button.textContent = "Submit your message!";
+  liButton.appendChild(button);
+  ul.appendChild(liButton);
+
+  // Append elements to the form
+  fieldset.appendChild(ul);
+  form.appendChild(p);
+  form.appendChild(fieldset);
 
   component.appendChild(contactTitle);
-  component.appendChild(contactForm);
+  component.appendChild(form);
   return component;
 };
 
