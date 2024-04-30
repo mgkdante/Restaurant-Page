@@ -1,4 +1,4 @@
-import restaurantImage from "./restaurant.jpg";
+import restaurantImage from "./restaurant.jpeg";
 
 const homeComponent = () => {
   const component = document.createElement("div");

@@ -153,7 +153,7 @@ button {
 }
 
 #location {
-  padding: 4rem;
+  padding: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
